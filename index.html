@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+      <title>Pinnacle Pathfinders</title>
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css2?family=Merienda:wght@300..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+      <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"> -->
+      <!-- <link href="css/style.css" rel="stylesheet"> -->
+        <!-- Custom CSS -->
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f0f4f8;
+    }
+
+    h1, h2 {
+      font-family: 'Merienda', cursive;
+    }
+
+    .navbar {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      transition: background-color 0.3s ease, box-shadow 0.3s ease; position : sticky;
+    }
+
+    .navbar:hover{
+      /* background-color: rgba(10, 7, 7, 0.95); */
+      background-color: rgba(182, 87, 87, 0);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    .hero {
+      position: relative;
+      height: 100vh;
+      width: 100%;
+      color: white;
+      text-align: center;
+    }
+
+    .bg-video {
+      position: relative;
+      top: 0;
+      left: 0;
+      width: 107vw;
+      height: 100vh;
+      object-fit: cover;
+      z-index: -1;
+    }
+
+    .hero-content {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 1;
+    }
+
+    .mute-btn {
+      position: absolute;
+      bottom: 20px;
+      right: 20px;
+      z-index: 2;
+      background-color: rgba(0, 0, 0, 0.6);
+      color: white;
+      border: none;
+      font-size: 24px;
+      padding: 10px 12px;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .mute-btn:hover {
+      background-color: rgba(0, 0, 0, 0.8);
+    }
+
+        .hero-section {
+      position: relative;
+      height: 100vh;
+      color: white;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.4);
+    }
+
+    .hero-content {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+    }
+
+    .hero-title {
+      font-size: 4rem;
+      font-weight: bold;
+    }
+
+    .hero-subtitle {
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+    }
+
+    .btn-discover {
+      background-color: red;
+      color: white;
+      font-weight: bold;
+    }
+
+    .btn-discover:hover {
+      background-color: darkred;
+    }
+
+    .vertical-btn {
+      position: absolute;
+      top: 50%;
+      right: 0;
+      transform: translateY(-50%);
+      writing-mode: vertical-rl;
+      text-orientation: mixed;
+      background: red;
+      color: white;
+      padding: 10px;
+      border-radius: 5px 0 0 5px;
+      font-weight: bold;
+    }
+    .feature-icon {
+      font-size: 2rem;
+      color: #8da2b8;
+    }
+
+    footer {
+      background-color: #343a40;
+      color: white;
+      padding: 20px 0;
+    }
+     body, html {
+      height: 100%;
+      margin: 0;
+    }
+    .hero-booking {
+      background: url('image/aeroplane.jpg') no-repeat center center;
+      background-size: cover;
+      height: 100vh;
+      color: white;
+      position: relative;
+      padding-top: 80px;
+    }
+    .tabs .nav-link {
+      background-color: #1b1e3f;
+      color: white;
+      border-radius: 0;
+      margin-right: 5px;
+    }
+    .tabs .nav-link.active {
+      background-color: red;
+    }
+    .form-control, .form-select {
+      border-radius: 0.5rem;
+    }
+    .fare-options input {
+      margin-right: 0.5rem;
+    }
+    .fare-options label {
+      background: white;
+      color: black;
+      border-radius: 0.5rem;
+      padding: 8px 16px;
+      margin-right: 10px;
+      cursor: pointer;
+    }
+    .btn-search {
+      background-color: #ccc;
+      border: none;
+      color: black;
+      padding: 10px 30px;
+      border-radius: 30px;
+      font-weight: bold;
+    }
+    .book-label {
+      position: absolute;
+      top: 50%;
+      right: 0;
+      transform: translateY(-50%);
+      background: red;
+      color: white;
+      padding: 8px;
+      writing-mode: vertical-rl;
+      text-orientation: mixed;
+      font-weight: bold;
+      border-radius: 10px 0 0 10px;
+    }
+    body {
+      background: #f8f9fa;
+    }
+    .attraction-card {
+      position: relative;
+      overflow: hidden;
+      border-radius: 15px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    }
+    .attraction-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+    .attraction-card:hover img {
+      transform: scale(1.05);
+    }
+    .attraction-title {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      padding: 10px;
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+      color: #fff;
+      font-weight: bold;
+      text-align: center;
+    }
+    .discover-btn {
+      background-color: red;
+      color: white;
+      padding: 10px 25px;
+      border-radius: 25px;
+      font-weight: bold;
+      text-decoration: none;
+    }
+    .discover-btn:hover {
+      background-color: darkred;
+    }
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+    .travel-diaries {
+      background-color: #fbc758;
+      background-image: url('data:image/svg+xml;utf8,<svg width="100" height="20" xmlns="http://www.w3.org/2000/svg"><path d="M0 10 Q 25 0, 50 10 T 100 10" fill="none" stroke="%23f2b03c" stroke-width="2"/></svg>');
+      background-repeat: repeat;
+      padding: 60px 0;
+    }
+
+    .travel-diaries .title {
+      font-size: 3rem;
+      font-weight: 800;
+      color: white;
+    }
+
+    .travel-diaries .subtitle {
+      color: white;
+      margin-bottom: 30px;
+    }
+
+    .dropdowns select {
+      margin: 10px;
+      padding: 8px;
+      border-radius: 5px;
+      border: none;
+      font-weight: 500;
+    }
+
+    .diary-card {
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+
+    .diary-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .diary-info {
+      background-color: black;
+      color: white;
+      padding: 15px;
+      height: 140px;
+    }
+
+    .diary-info small {
+      color: #f64b4b;
+      font-weight: bold;
+    }
+
+    .diary-info span {
+      color: #ccc;
+      font-weight: 400;
+    }
+
+    .discover-btn {
+      background-color: red;
+      color: white;
+      border: none;
+      border-radius: 20px;
+      padding: 10px 25px;
+      font-weight: bold;
+      text-decoration: none;
+      display: inline-block;
+    }
+  </style>
+   </head>
+   <body>
+      <!-- Navbar -->
+      <nav class="navbar navbar-expand-lg navbar-light bg-transparent px-lg-3 py-lg-2 shadow-sm sticky-top">
+         <div class="container-fluid">
+            <a class="navbar-brand fw-bold fs-3 h-font" href="#">Tripling.com</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+            <button class="navbar-toggler me-2" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
+               aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>    
+            <div class="mx-auto d-flex">
+               <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+               <li class="nav-item dropdown me-2">
+                  <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Destinations
+                  </button>
+                  <ul class="dropdown-menu">
+                     <div class="btn-group">
+                        <a href="#" class="btn btn-secondary active" aria-current="page">Districts</a>
+                        <a href="#" class="btn btn-primary">Destinations</a>
+                        <a href="#" class="btn btn-primary">Wildlife Santuaries and National Park</a>
+                     </div>
+                  </ul>
+               </li>
+               <li class="nav-item dropdown me-2">
+                  <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Experiences
+                  </button>
+                  <ul class="dropdown-menu">
+                     <li><a class="dropdown-item" href="#">Action</a></li>
+                     <li><a class="dropdown-item" href="#">Another action</a></li>
+                     <li><a class="dropdown-item" href="#">Something else here</a></li>
+                  </ul>
+               </li>
+               <li class="nav-item dropdown me-2">
+                  <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Plan your trip
+                  </button>
+                  <ul class="dropdown-menu">
+                     <li><a class="dropdown-item" href="#">Action</a></li>
+                     <li><a class="dropdown-item" href="#">Another action</a></li>
+                     <li><a class="dropdown-item" href="#">Something else here</a></li>
+                  </ul>
+            </div>
+            </li>
+            <div class="navbar-icons d-flex align-items-center">
+               <i class="bi bi-search fs-5 me-lg-3 me-2"></i>
+               <div class="dropdown">
+                  <a class="nav-link dropdown-toggle text-dark me-2" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  <i class="bi bi-person fs-5"></i>
+                  </a>
+                  <ul class="dropdown-menu dropdown-menu-end">
+                     <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#loginModal">Login</a></li>
+                     <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#registerModal">Register</a></li>
+                  </ul>
+               </div>
+               <i class="bi bi-heart fs-5 ms-2"></i>
+               <button class="btn btn-light ms-2">
+               <i class="bi bi-list fs-3"></i>
+               </button>
+            </div>
+      </nav>
+
+      
+
+      <!-- login Modal -->
+<div class="modal fade" id="loginModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel"><i class="bi bi-person-square me-2"></i>Login</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+       <div class="mb-3">
+  <label for="exampleFormControlInput1" class="form-label">Email address</label>
+  <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+</div>
+ <div class="mb-3">
+  <label class="form-label">Password</label>
+  <input type="password" class="form-control" id="password" placeholder="Enter your password">
+</div>
+      </div>
+      <div class="mb-4  ps-3 me-3 d-flex justify-content-between">
+                <button type="submit" class="btn btn-dark">Login</button>
+                <href="javascript: void(0)">Forgot Password?</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+      <!-- Register Modal -->
+<div class="modal fade" id="registerModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel"><i class="bi bi-person-fill-add me-2"></i></i>Register here</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+<div class="container-fluid">
+            <div class="row">
+              <div class="col-md-6 mb-4 ps-0">
+                <label>First Name</label>
+                <input type="text" class="form-control shadow-none" placeholder="First Name">
+              </div>
+
+              <div class="col-md-6 mb-4 ps-0">
+                <label>Last Name</label>
+                <input type="text" class="form-control shadow-none" placeholder="Last Name">
+              </div>
+
+              <div class="col-md-6 mb-4 p-0">
+                <label>Email</label>
+                <input type="email" class="form-control shadow-none" placeholder="Email">
+              </div>
+
+              <div class="col-md-6 mb-4 ps-0">
+                <label>Phone Number</label>
+                <input type="number" class="form-control shadow-none" placeholder="Phone number">
+              </div>
+
+              <div class="col-md-6 mb-4 p-0">
+                <label>Photo</label>
+                <input type="file" class="form-control shadow-none">
+              </div>
+
+              <div class="col-md-6 mb-4 ps-0">
+                <label>Date Of Birth</label>
+                <input type="date" class="form-control shadow-none">
+              </div>
+
+              <div class="col-md-6 mb-4 p-0">
+                <label>Pincode</label>
+                <input type="number" class="form-control shadow-none" placeholder="Pincode">
+              </div>
+
+              
+              <div class="col-md-12 mb-4 ps-0" >
+                <label>Address</label>
+                <textarea class="form-control shadow-none" placeholder="Address" rows="3" ></textarea>
+              </div>
+
+            <div class="col-md-6 mb-4 ps-0">
+                <label>Password</label>
+                <input type="password" class="form-control shadow-none" placeholder="Password">
+              </div>
+
+              <div class="col-md-6 mb-4 p-0">
+                <label>Confirm Password</label>
+                <input type="password" class="form-control shadow-none" placeholder="Confirm Password">
+              </div>
+
+
+            </div>
+          </div>
+        </div>
+
+        <div class="text-center mb-3">
+          <button type="submit" class="btn btn-dark shadow-none">Register</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+          
+   
+    
+
+      <!-- Hero Section -->
+      <div class="hero">
+      <video autoplay muted loop playsinline class="bg-video" id="bgVideo">
+      <source src="image/Tou-2.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+      </video>
+      <div class="hero-content">
+      <h1>Explore the World with Us</h1>
+      <p>Unforgettable adventures, breathtaking destinations, and seamless travel experiences.</p>
+      <a href="#" class="btn btn-primary mt-3">Discover More</a>
+      </div>
+      <!-- Mute/Unmute Button -->
+      <button id="muteButton" class="mute-btn" onclick="toggleMute()">🔇</button>
+      <div class="vertical-btn">Book Your Travel</div>
+      </div> 
+      
+      <!-- Foreground Content -->
+      </div> 
+      <!--destinaton-->
+      <div id="destinationCarousel" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner">
+    
+    <!-- Slide 1 -->
+    <div class="carousel-item active">
+      <div class="hero-section" style="background-image: url('image/patna.jpg');">
+        <div class="overlay"></div>
+        <div class="hero-content">
+          <h1 class="hero-title">DESTINATIONS</h1>
+          <p class="hero-subtitle">for every bucket list</p>
+          <h2 class="text-white fw-bold">← Patna →</h2>
+          <a href="#" class="btn btn-discover mt-3">Discover more</a>
+        </div>
+        <div class="vertical-btn">Book Your Travel</div>
+      </div>
+    </div>
+
+    <!-- Add more slides here if needed -->
+  
+
+  </div>
+   <!-- Attractions Section -->
+  <section class="py-5 text-center bg-light">
+  <div class="container">
+    <h2 class="fw-bold text-primary" style="font-size: 3rem;">ATTRACTIONS</h2>
+    <p class="text-muted mb-5" style="font-size: 1.2rem;">— worth a thousand stories —</p>
+
+    <div class="row g-4 justify-content-center">
+      <!-- Card 1 -->
+      <div class="col-lg-3 col-md-6 col-sm-12">
+        <div class="attraction-card">
+          <img src="image/ganga.jpg" alt="Har Ki Pauri">
+          <div class="attraction-title">Har Ki Pauri</div>
+        </div>
+      </div>
+      <!-- Card 2 -->
+      <div class="col-lg-3 col-md-6 col-sm-12">
+        <div class="attraction-card">
+          <img src="image/taj.jpg" alt="Taj Mahal">
+          <div class="attraction-title">Taj Mahal</div>
+        </div>
+      </div>
+      <!-- Card 3 -->
+      <div class="col-lg-3 col-md-6 col-sm-12">
+        <div class="attraction-card">
+          <img src="image/guru.jpg" alt="Sri Jagannath Temple">
+          <div class="attraction-title">Sri Jagannath Temple</div>
+        </div>
+      </div>
+      <!-- Card 4 -->
+      <div class="col-lg-3 col-md-6 col-sm-12">
+        <div class="attraction-card">
+          <img src="image/tel.jpg" alt="Chidiya Tapu">
+          <div class="attraction-title">Chidiya Tapu</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-5">
+      <a href="#" class="discover-btn">Discover more</a>
+    </div>
+  </div>
+</section>
+<!--travel-diaries-->
+<section class="travel-diaries text-center">
+  <div class="container">
+    <h2 class="title">TRAVEL DIARIES</h2>
+    <p class="subtitle">— for every passion —</p>
+
+    <div class="dropdowns mb-4">
+      <select>
+        <option>Interests</option>
+        <option>Spiritual</option>
+        <option>Heritage</option>
+        <option>Crafts</option>
+        <option>Adventure</option>
+      </select>
+
+      <select>
+        <option>Regions</option>
+        <option>Delhi</option>
+        <option>Goa</option>
+        <option>Gujarat</option>
+        <option>Haryana</option>
+      </select>
+    </div>
+
+    <!-- Swiper -->
+    <div class="swiper mySwiper">
+      <div class="swiper-wrapper">
+
+        <!-- Card 1 -->
+        <div class="swiper-slide">
+          <div class="diary-card">
+            <img src="image/jama.jpg" alt="Jama Masjid">
+            <div class="diary-info">
+              <small>Delhi</small> <span>| Spiritual</span>
+              <h6 class="mt-2 fw-bold">Iftar at Jama Masjid, Delhi</h6>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="swiper-slide">
+          <div class="diary-card">
+            <img src="image/goa.jpg" alt="Goa">
+            <div class="diary-info">
+              <small>Goa</small> <span>| Heritage</span>
+              <h6 class="mt-2 fw-bold">Discovering Goa differently</h6>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="swiper-slide">
+          <div class="diary-card">
+            <img src="image/kutch.jpg" alt="Kutch">
+            <div class="diary-info">
+              <small>Gujarat</small> <span>| Crafts</span>
+              <h6 class="mt-2 fw-bold">Crafts of Kutch - Rogan art, ajrakh & more (Gujarat, India)</h6>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="swiper-slide">
+          <div class="diary-card">
+            <img src="image/gurgaon.jpg" alt="Gurgaon">
+            <div class="diary-info">
+              <small>Haryana</small> <span>| Adventure</span>
+              <h6 class="mt-2 fw-bold">Thrilling escapades in and around Gurgaon</h6>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      
+    <div class="swiper-navigation">
+      <a href="#" class="discover-btn mt-4">Discover more</a>
+    </div>
+  </div>
+</section>
+
+  <div class="hero-booking text-center">
+  <div class="book-label">Book Your Travel</div>
+  <h2 class="fw-bold display-4">Inspired?</h2>
+  <h1 class="fw-bold display-2">GET STARTED</h1>
+
+  <div class="container mt-4">
+    <ul class="nav nav-tabs justify-content-center tabs mb-4" role="tablist">
+      <li class="nav-item">
+        <a class="nav-link active" data-bs-toggle="tab" href="#flights">✈ Flights</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" data-bs-toggle="tab" href="#trains">🚆 Trains</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" data-bs-toggle="tab" href="#buses">🚌 Buses</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" data-bs-toggle="tab" href="#cabs">🚖 Cabs</a>
+      </li>
+    </ul>
+
+    <div class="tab-content text-dark bg-white p-4 rounded shadow">
+      <div class="tab-pane fade show active" id="flights">
+        <form>
+          <div class="row g-3">
+            <div class="col-md-3">
+              <input type="text" class="form-control" placeholder="Origin" />
+            </div>
+            <div class="col-md-3">
+              <input type="text" class="form-control" placeholder="Destination" />
+            </div>
+            <div class="col-md-3">
+              <input type="date" class="form-control" />
+            </div>
+            <div class="col-md-3">
+              <input type="date" class="form-control" placeholder="Return" />
+            </div>
+            <div class="col-md-3">
+              <select class="form-select">
+                <option>1 Traveler</option>
+                <option>2 Travelers</option>
+                <option>3 Travelers</option>
+              </select>
+            </div>
+            <div class="col-md-3">
+              <select class="form-select">
+                <option>Economy</option>
+                <option>Business</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="fare-options d-flex flex-wrap mt-4">
+            <label><input type="radio" name="fare" checked> Regular Fares</label>
+            <label><input type="radio" name="fare"> Armed Forces</label>
+            <label><input type="radio" name="fare"> Students</label>
+            <label><input type="radio" name="fare"> Senior Citizens</label>
+            <label><input type="radio" name="fare"> Doctors/Nurses</label>
+          </div>
+
+          <div class="form-check text-start mt-3">
+            <input class="form-check-input" type="checkbox" id="directOnly">
+            <label class="form-check-label" for="directOnly">Direct flight only</label>
+          </div>
+
+          <button type="submit" class="btn btn-search mt-4">Search</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <!-- Optional: Carousel Controls -->
+ 
+
+  <button class="carousel-control-prev" type="button" data-bs-target="#destinationCarousel" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon"></span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#destinationCarousel" data-bs-slide="next">
+    <span class="carousel-control-next-icon"></span>
+  </button>
+      </div>
+     
+         <!-- Footer -->
+         <footer class="bg-dark text-white text-center py-3">
+            &copy; 2025 Tripling.com All rights reserved.
+         </footer>
+         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+         <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"> -->
+         <!-- Scripts -->
+         <script>
+            function toggleMute() {
+              const video = document.getElementById("bgVideo");
+              const button = document.getElementById("muteButton");
+              video.muted = !video.muted;
+              button.textContent = video.muted ? "🔇" : "🔊";
+            }
+         </script>
+   </body>
+</html>
